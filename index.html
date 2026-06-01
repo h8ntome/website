@@ -1,301 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vanguard Games</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vanguard Games</title>
 
-  <style>
-    :root {
-      --bg: #0b0b0b;
-      --panel: #111;
-      --panel-soft: #151515;
-      --text: #ffffff;
-      --muted: #bdbdbd;
-      --accent: #4f8cff;
-      --border: #222;
-    }
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --panel: #111;
+      --panel-soft: #151515;
+      --text: #ffffff;
+      --muted: #bdbdbd;
+      --accent: #4f8cff;
+      --border: #222;
+    }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; }
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(1200px 600px at top, #111 0%, #050505 60%);
-      color: var(--text);
-      scroll-behavior: smooth;
-      padding-bottom: 90px;
-    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(1200px 600px at top, #111 0%, #050505 60%);
+      color: var(--text);
+      scroll-behavior: smooth;
+      padding-bottom: 90px;
+    }
 
-    header {
-      position: sticky;
-      top: 0;
-      background: rgba(11, 11, 11, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      z-index: 100;
-      transition: transform 0.3s ease;
-    }
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(11, 11, 11, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      transition: transform 0.3s ease;
+    }
 
-    header.hidden { transform: translateY(-100%); }
+    header.hidden { transform: translateY(-100%); }
 
-    nav {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 28px;
-    }
+    nav {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 28px;
+    }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
 
-    .brand img { height: 72px; }
+    .brand img { height: 72px; }
 
-    .brand span {
-      font-weight: 700;
-      font-size: 1.2rem;
-      white-space: nowrap;
-    }
+    .brand span {
+      font-weight: 700;
+      font-size: 1.2rem;
+      white-space: nowrap;
+    }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
 
-    .nav-links a,
-    .bottom-nav a {
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: 500;
-      padding: 10px 14px;
-      border-radius: 10px;
-      transition: background 0.2s, color 0.2s;
-      font-size: 0.95rem;
-    }
+    .nav-links a,
+    .bottom-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 10px 14px;
+      border-radius: 10px;
+      transition: background 0.2s, color 0.2s;
+      font-size: 0.95rem;
+    }
 
-    .nav-links a:hover,
-    .bottom-nav a:hover {
-      background: var(--panel-soft);
-      color: var(--text);
-    }
+    .nav-links a:hover,
+    .bottom-nav a:hover {
+      background: var(--panel-soft);
+      color: var(--text);
+    }
 
-    .nav-links a.active,
-    .bottom-nav a.active {
-      background: var(--panel-soft);
-      color: var(--accent);
-    }
+    .nav-links a.active,
+    .bottom-nav a.active {
+      background: var(--panel-soft);
+      color: var(--accent);
+    }
 
-    section {
-      max-width: 1100px;
-      margin: auto;
-      padding: 120px 22px;
-    }
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 120px 22px;
+    }
 
-    h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); }
-    h2 { font-size: clamp(1.8rem, 4vw, 2.2rem); }
+    h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.2rem); }
 
-    p {
-      font-size: 1.05rem;
-      line-height: 1.75;
-      color: var(--muted);
-      max-width: 820px;
-    }
+    p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 820px;
+    }
 
-    .hero {
-      min-height: calc(100vh - 120px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+    .hero {
+      min-height: calc(100vh - 120px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
-    .status {
-      margin-top: 18px;
-      font-size: 0.95rem;
-      color: var(--accent);
-    }
+    .status {
+      margin-top: 18px;
+      font-size: 0.95rem;
+      color: var(--accent);
+    }
 
-    .card {
-      background: linear-gradient(180deg, #141414, #0f0f0f);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 36px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-      margin-top: 20px;
-    }
+    .card {
+      background: linear-gradient(180deg, #141414, #0f0f0f);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      margin-top: 20px;
+    }
 
-    .project-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
+    .project-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
 
-    .project-badge {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      color: var(--accent);
-      font-size: 0.9rem;
-    }
+    .project-badge {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
 
-    .contact-link {
-      color: var(--text);
-      text-decoration: none;
-      border-bottom: 1px solid var(--panel-soft);
-    }
+    .contact-link {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--panel-soft);
+    }
 
-    .contact-link:hover {
-      color: var(--accent);
-      border-bottom-color: var(--accent);
-    }
+    .contact-link:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
 
-    .policy h3 {
-      margin-top: 26px;
-      color: var(--text);
-    }
+    .policy h3 {
+      margin-top: 26px;
+      color: var(--text);
+    }
 
-    footer {
-      text-align: center;
-      padding: 50px 20px;
-      color: #777;
-      border-top: 1px solid var(--border);
-      background: #070707;
-    }
+    footer {
+      text-align: center;
+      padding: 50px 20px;
+      color: #777;
+      border-top: 1px solid var(--border);
+      background: #070707;
+    }
 
-    .bottom-nav { display: none; }
+    .bottom-nav { display: none; }
 
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      nav { justify-content: center; }
-      .brand span { display: none; }
-      .brand img { height: 96px; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      nav { justify-content: center; }
+      .brand span { display: none; }
+      .brand img { height: 96px; }
 
-      section { padding: 90px 18px; }
+      section { padding: 90px 18px; }
 
-      .bottom-nav {
-        display: flex;
-        position: fixed;
-        bottom: 12px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(20,20,20,0.95);
-        backdrop-filter: blur(10px);
-        border: 1px solid var(--border);
-        border-radius: 22px;
-        padding: 10px 14px;
-        gap: 16px;
-        z-index: 200;
-      }
-    }
-  </style>
+      .bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(20,20,20,0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 10px 14px;
+        gap: 16px;
+        z-index: 200;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <header id="topHeader">
-  <nav>
-    <div class="brand">
-      <img src="vanguardlogo.png" alt="Vanguard Games logo">
-      <span>Vanguard Games</span>
-    </div>
-    <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-      <a href="#privacy">Privacy</a>
-    </div>
-  </nav>
+  <nav>
+    <div class="brand">
+      <img src="vanguardlogo.png" alt="Vanguard Games logo">
+      <span>Vanguard Games</span>
+    </div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="#privacy">Privacy</a>
+    </div>
+  </nav>
 </header>
 
 <div class="bottom-nav">
-  <a href="#home">Home</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact</a>
-  <a href="#privacy">Privacy</a>
+  <a href="#home">Home</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+  <a href="#privacy">Privacy</a>
 </div>
 
 <section id="home" class="hero">
-  <h1>Vanguard Games</h1>
-  <p>
-    Vanguard Games is an independent game studio currently working on
-    small, focused mobile games.
-  </p>
-  <div class="status">Early development stage</div>
+  <h1>Vanguard Games</h1>
+  <p>
+    Vanguard Games is an independent game studio currently working on
+    small, focused mobile games.
+  </p>
+  <div class="status">Early development stage</div>
 </section>
 
 <section id="projects">
-  <h2>Projects</h2>
+  <h2>Projects</h2>
 
-  <div class="card">
-    <div class="project-title">Imposter Plus</div>
-    <p>A social party game where everyone except one person knows the word.</p>
-    <span class="project-badge">In Development</span>
-  </div>
+  <div class="card">
+    <div class="project-title">Imposter Plus</div>
+    <p>A social party game where everyone except one person knows the word.</p>
+    <span class="project-badge">In Development</span>
+  </div>
 
-  <div class="card">
-    <div class="project-title">Guess Who?</div>
-    <p>A casual guessing game designed for quick, simple gameplay.</p>
-    <span class="project-badge">In Development</span>
-  </div>
+  <div class="card">
+    <div class="project-title">Guess Who?</div>
+    <p>A casual guessing game designed for quick, simple gameplay.</p>
+    <span class="project-badge">In Development</span>
+  </div>
 </section>
 
 <section id="contact">
-  <h2>Contact</h2>
-  <div class="card">
-    <p><strong>Email</strong><br>
-      <a href="mailto:hadi@vanguardgames.co" class="contact-link">
-        hadi@vanguardgames.co
-      </a>
-    </p>
-  </div>
+  <h2>Contact</h2>
+  <div class="card">
+    <p><strong>Email</strong><br>
+      <a href="mailto:hadi@vanguardgames.co" class="contact-link">
+        hadi@vanguardgames.co
+      </a>
+    </p>
+  </div>
 </section>
 
 <section id="privacy">
-  <h2>Privacy Policies</h2>
+  <h2>Privacy Policies</h2>
 
-  <div class="card policy">
-    <h3>Privacy Policy — Imposter Plus</h3>
-    <p><strong>Effective Date:</strong> January 23, 2026</p>
-    <p>Imposter Plus collects name and email for account creation. No ads, no tracking, no data selling.</p>
-  </div>
+  <div class="card policy">
+    <h3>Privacy Policy — Imposter Plus</h3>
+    <p><strong>Effective Date:</strong> January 23, 2026</p>
+    <p>Imposter Plus collects name and email for account creation. No ads, no tracking, no data selling.</p>
+  </div>
 
-  <div class="card policy">
-    <h3>Privacy Policy — Guess Who?</h3>
-    <p>Guess Who? does not collect personal information.</p>
-  </div>
+  <div class="card policy">
+    <h3>Privacy Policy — Guess Who?</h3>
+    <p>Guess Who? does not collect personal information.</p>
+  </div>
 
-  <div class="card policy">
-    <h3>Privacy Policy — MoneyWise AI</h3>
+  <div class="card policy">
+    <h3>Privacy Policy — MoneyWise AI</h3>
 
-    <p><strong>Effective Date:</strong> March 19, 2026</p>
+    <p><strong>Effective Date:</strong> March 19, 2026</p>
 
-    <p>
-      MoneyWise AI respects your privacy and is committed to protecting your personal information.
-    </p>
+    <p>
+      MoneyWise AI respects your privacy and is committed to protecting your personal information.
+    </p>
 
-    <h3>1. Information We Collect</h3>
-    <p>Personal and financial information such as income, expenses, and goals.</p>
+    <h3>1. Information We Collect</h3>
+    <p>Personal and financial information such as income, expenses, and goals.</p>
 
-    <h3>2. Usage</h3>
-    <p>Used to generate financial insights and improve the app.</p>
+    <h3>2. Usage</h3>
+    <p>Used to generate financial insights and improve the app.</p>
 
-    <h3>3. AI Processing</h3>
-    <p>Data may be processed by secure AI services.</p>
+    <h3>3. AI Processing</h3>
+    <p>Data may be processed by secure AI services.</p>
 
-    <h3>4. Data Sharing</h3>
-    <p>We do not sell your data.</p>
+    <h3>4. Data Sharing</h3>
+    <p>We do not sell your data.</p>
 
-    <h3>5. Contact</h3>
-    <p>
-      <a href="mailto:hadi@vanguardgames.co" class="contact-link">
-        hadi@vanguardgames.co
-      </a>
-    </p>
-  </div>
+    <h3>5. Contact</h3>
+    <p>
+      <a href="mailto:hadi@vanguardgames.co" class="contact-link">
+        hadi@vanguardgames.co
+      </a>
+    </p>
+  </div>
 <div class="card policy">
   <h3>Privacy Policy — Wordle Pro</h3>
 
@@ -335,38 +335,38 @@
 </section>
 
 <footer>
-  © 2025 Vanguard Games. All rights reserved.
+  © 2025 Vanguard Games. All rights reserved.
 </footer>
 
 <script>
-  let lastScroll = 0;
-  const header = document.getElementById("topHeader");
+  let lastScroll = 0;
+  const header = document.getElementById("topHeader");
 
-  window.addEventListener("scroll", () => {
-    if (window.innerWidth > 768) return;
-    const currentScroll = window.pageYOffset;
-    if (currentScroll > lastScroll && currentScroll > 100) {
-      header.classList.add("hidden");
-    } else {
-      header.classList.remove("hidden");
-    }
-    lastScroll = currentScroll;
-  });
+  window.addEventListener("scroll", () => {
+    if (window.innerWidth > 768) return;
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > lastScroll && currentScroll > 100) {
+      header.classList.add("hidden");
+    } else {
+      header.classList.remove("hidden");
+    }
+    lastScroll = currentScroll;
+  });
 
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".nav-links a, .bottom-nav a");
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll(".nav-links a, .bottom-nav a");
 
-  window.addEventListener("scroll", () => {
-    let current = "";
-    sections.forEach(section => {
-      if (pageYOffset >= section.offsetTop - 150) {
-        current = section.id;
-      }
-    });
-    navLinks.forEach(link => {
-      link.classList.toggle("active", link.getAttribute("href") === #${current});
-    });
-  });
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(section => {
+      if (pageYOffset >= section.offsetTop - 150) {
+        current = section.id;
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle("active", link.getAttribute("href") === `#${current}`);
+    });
+  });
 </script>
 
 </body>
